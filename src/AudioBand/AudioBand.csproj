@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
     <AllowedReferenceRelatedFileExtensions>.none</AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
@@ -100,6 +103,7 @@
     <Compile Include="AudioSource\AudioSourceSettingInfo.cs" />
     <Compile Include="Commands\AsyncRelayCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DpiHelper.cs" />
     <Compile Include="Extensions\AudioSourceExtenstions.cs" />
     <Compile Include="Extensions\BindingExtensions.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
@@ -262,6 +266,7 @@
       <SubType>UserControl</SubType>
       <DependentUpon>MainControl.cs</DependentUpon>
     </Compile>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AudioBand.ViewModels.AlbumArtPopupVM.datasource" />
     <None Include="Properties\DataSources\AudioBand.ViewModels.AlbumArtVM.datasource" />

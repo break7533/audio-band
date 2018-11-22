@@ -14,8 +14,11 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using System.Windows.Threading;
+using ProgressBar = AudioBand.Models.ProgressBar;
 using SettingsWindow = AudioBand.Views.Wpf.SettingsWindow;
 using Size = System.Drawing.Size;
 
@@ -81,7 +84,6 @@ namespace AudioBand
 
         public MainControl()
         {
-
             InitializeComponent();
 #if DEBUG
             System.Diagnostics.Debugger.Launch();
@@ -288,6 +290,24 @@ namespace AudioBand
             {
                 Logger.Error(e);
             }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            const int WMDpiChanged = 0x02E0;
+            if (m.Msg == WMDpiChanged)
+            {
+                m.Result = IntPtr.Zero;
+                OnDpiChanged();
+                return;
+            }
+
+            base.WndProc(ref m);
+        }
+
+        private void OnDpiChanged()
+        {
+            Logger.Debug($"Dpi changed {DpiHelper.GetScalingFactor(this)}");
         }
     }
 }
